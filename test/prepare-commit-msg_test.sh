@@ -27,5 +27,8 @@ assert "feat: [BRANCH-123] the msg" "$("$SCRIPT" "the msg")" "Use feat/ when no 
 export TEST_BRANCH="feat/BRANCH-123"
 assert "doc: [BRANCH-123] the msg" "$("$SCRIPT" "doc: the msg")" "Override key in message"
 
+export TEST_BRANCH="main"
+assert "feat: the msg" "$("$SCRIPT" "the msg")" "Make Ticket Key optional"
+
 echo ""
 echo "All assertions passed. Total:" "$TOTAL_TESTS"

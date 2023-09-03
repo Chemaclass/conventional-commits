@@ -103,7 +103,11 @@ function render_message() {
   local sanitizedMsg="${msgWithoutScope#*:}"
   sanitizedMsg="${sanitizedMsg#"${sanitizedMsg%%[![:space:]]*}"}"
 
-  echo "${branchKey}${commitScope}${breakingChange}: [$jiraTicket] $sanitizedMsg"
+  if [[ $jiraTicket != '' ]]; then
+    echo "${branchKey}${commitScope}${breakingChange}: [$jiraTicket] $sanitizedMsg"
+  else
+    echo "${branchKey}${commitScope}${breakingChange}: $sanitizedMsg"
+  fi
 }
 
 function check_conventional_commit() {
