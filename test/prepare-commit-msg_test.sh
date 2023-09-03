@@ -41,5 +41,11 @@ assert "feat(scope): [BRANCH-123] the msg" "$("$SCRIPT" "(scope)the msg")" "Star
 export TEST_BRANCH="doc/BRANCH-123"
 assert "doc: [BRANCH-123] the msg" "$("$SCRIPT" "the msg")" "Use a custom branch key"
 
+export TEST_BRANCH="BRANCH-123"
+assert "feat: [BRANCH-123] feat the msg" "$("$SCRIPT" "feat the msg")" "Incomplete conventional commit"
+assert "feat: [BRANCH-123] the msg" "$("$SCRIPT" "feat: the msg")" "Incomplete conventional commit"
+assert "feat: [BRANCH-123] [INCOM-456] the msg" "$("$SCRIPT" "[INCOM-456] the msg")" "Incomplete conventional commit"
+assert "feat: [BRANCH-123] doc [INCOM-456] the msg" "$("$SCRIPT" "doc [INCOM-456] the msg")" "Incomplete conventional commit"
+
 echo ""
 echo "All assertions passed. Total:" "$TOTAL_TESTS"
