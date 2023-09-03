@@ -1,23 +1,6 @@
 #!/bin/bash
 
-TOTAL_TESTS=0
-
-assert() {
-  local expected=$1
-  local actual=$2
-  local label="${3:-Assertion}"
-
-  if [[ "$expected" != "$actual" ]]; then
-    printf "❌  %s failed:\\n Expected '%s'\\n but got  '%s'\\n" "$label" "$expected" "$actual"
-    exit 1
-  else
-    ((TOTAL_TESTS++))
-    printf "✔️  Passed: %s -> '%s'\\n" "$label" "$expected"
-  fi
-}
-
-
-export TEST=true
+source "$(dirname "$0")/assert.sh"
 
 export SCRIPT="$PWD/git-hooks/prepare-commit-msg.sh"
 
@@ -50,6 +33,3 @@ assert "feat: [BRANCH-4] doc [INCOM-456] the msg" "$("$SCRIPT" "doc [INCOM-456] 
 export TEST_BRANCH="BRANCH-5"
 assert "feat!: [BRANCH-5] the msg" "$("$SCRIPT" "!the msg")" "Start message with breaking change"
 assert "feat(scope)!: [BRANCH-5] the msg" "$("$SCRIPT" "!(scope)the msg")" "Breaking change and scope"
-
-echo ""
-echo "All assertions passed. Total:" "$TOTAL_TESTS"
