@@ -15,17 +15,17 @@ This repository is focused on the **prepare-commit-msg** client-side hook:
 
 ### Installation
 
-Create a symlink from the actual hook to point to the bash script.
+Creates symlink from the actual hook to point to the bash script.
 
 ```bash
-ln -sf "git-hooks/prepare-commit-msg.sh" ".git/hooks/prepare-commit-msg"
+make init-hooks
 ```
 
 ### Tests
 
-I included several unit tests to verify the expected behaviour of the hook. The tests are next to the script with the hook. You can run them all by executing the `*_test.sh`.
+I included several unit tests to verify the expected behaviour of the hook logic.
 
 ```bash
-./git-hooks/prepare-commit-msg_test.sh
+make tests
 ```
 
