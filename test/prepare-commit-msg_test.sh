@@ -21,14 +21,19 @@ export TEST=true
 
 export SCRIPT="$PWD/git-hooks/prepare-commit-msg.sh"
 
+export TEST_BRANCH="main"
+assert "feat: the msg" "$("$SCRIPT" "the msg")" "Use default branchKey optional"
+
+export TEST_BRANCH="feat"
+assert "feat: the msg" "$("$SCRIPT" "the msg")" "Make jiraTicket optional"
+
 export TEST_BRANCH="BRANCH-123"
 assert "feat: [BRANCH-123] the msg" "$("$SCRIPT" "the msg")" "Use feat/ when no key is used in the branch"
 
 export TEST_BRANCH="feat/BRANCH-123"
 assert "doc: [BRANCH-123] the msg" "$("$SCRIPT" "doc: the msg")" "Override key in message"
-
-export TEST_BRANCH="main"
-assert "feat: the msg" "$("$SCRIPT" "the msg")" "Make Ticket Key optional"
+assert "feat: [BRANCH-123] the msg" "$("$SCRIPT" "the msg")" "Only commit message"
+assert "feat(scope): [BRANCH-123] the msg" "$("$SCRIPT" "(scope)the msg")" "Start message with scope"
 
 echo ""
 echo "All assertions passed. Total:" "$TOTAL_TESTS"
