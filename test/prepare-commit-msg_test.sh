@@ -21,6 +21,9 @@ export TEST=true
 
 export SCRIPT="$PWD/git-hooks/prepare-commit-msg.sh"
 
+export TEST_BRANCH=""
+assert "" "$("$SCRIPT" "doc: [BRANCH-666] the msg")" "Ignore all logic when using a conventional commit"
+
 export TEST_BRANCH="main"
 assert "feat: the msg" "$("$SCRIPT" "the msg")" "Use default branchKey optional"
 
