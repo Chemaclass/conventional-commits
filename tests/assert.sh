@@ -7,10 +7,24 @@ export assert
 TOTAL_TESTS=0
 FAILED=false
 
+transform_test_function_name() {
+  local originalFnName="$1"
+  local result
+
+  # Remove "test_" prefix
+  result="${originalFnName#test_}"
+  # Replace underscores with spaces
+  result="${result//_/ }"
+  # Capitalize the first letter
+  result="$(tr '[:lower:]' '[:upper:]' <<< "${result:0:1}")${result:1}"
+
+  echo "$result"
+}
+
 assert() {
   local expected="$1"
   local actual="$2"
-  local label="${3:-Assertion}"
+  local label="${3:-$(transform_test_function_name ${FUNCNAME[1]})}"
 
   if [[ "$expected" != "$actual" ]]; then
     FAILED=true
