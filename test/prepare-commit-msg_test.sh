@@ -16,5 +16,16 @@ assert() {
   fi
 }
 
+
+export TEST=true
+
+export SCRIPT="$PWD/git-hooks/prepare-commit-msg.sh"
+
+export TEST_BRANCH="BRANCH-123"
+assert "feat: [BRANCH-123] the msg" "$("$SCRIPT" "the msg")" "Use feat/ when no key is used in the branch"
+
+export TEST_BRANCH="feat/BRANCH-123"
+assert "doc: [BRANCH-123] the msg" "$("$SCRIPT" "doc: the msg")" "Override key in message"
+
 echo ""
 echo "All assertions passed. Total:" "$TOTAL_TESTS"
