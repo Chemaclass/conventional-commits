@@ -38,5 +38,8 @@ assert "doc: [BRANCH-123] the msg" "$("$SCRIPT" "doc: the msg")" "Override key i
 assert "feat: [BRANCH-123] the msg" "$("$SCRIPT" "the msg")" "Only commit message"
 assert "feat(scope): [BRANCH-123] the msg" "$("$SCRIPT" "(scope)the msg")" "Start message with scope"
 
+export TEST_BRANCH="doc/BRANCH-123"
+assert "doc: [BRANCH-123] the msg" "$("$SCRIPT" "the msg")" "Use a custom branch key"
+
 echo ""
 echo "All assertions passed. Total:" "$TOTAL_TESTS"
