@@ -1,6 +1,9 @@
 #!/bin/bash
 
 export TEST=true
+
+export assert
+
 TOTAL_TESTS=0
 FAILED=false
 
@@ -28,5 +31,3 @@ render_result() {
 
 # Set a trap to call render_result when the script exits
 trap render_result EXIT
-
-

@@ -16,9 +16,6 @@ list-tests:
 
 # Run all tests scripts
 test: $(TEST_SCRIPTS)
-	@for test_script in $(TEST_SCRIPTS); do \
-		echo "Running $$test_script"; \
-		bash $$test_script; \
-	done
+	$(TEST_SCRIPTS_DIR)/test_runner.sh $(TEST_SCRIPTS)
 
 .PHONY: test list-tests
