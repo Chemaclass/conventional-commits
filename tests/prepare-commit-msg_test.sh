@@ -2,7 +2,7 @@
 
 source "$(dirname "$0")/assert.sh"
 
-export SCRIPT="$PWD/git-hooks/prepare-commit-msg.sh"
+readonly SCRIPT="$PWD/git-hooks/prepare-commit-msg.sh"
 
 export TEST_BRANCH=""
 assert "" "$("$SCRIPT" "doc: [BRANCH-666] the msg")" "Ignore all logic when using a conventional commit"
