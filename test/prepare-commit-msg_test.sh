@@ -47,5 +47,9 @@ assert "feat: [BRANCH-4] the msg" "$("$SCRIPT" "feat: the msg")" "Incomplete con
 assert "feat: [BRANCH-4] [INCOM-456] the msg" "$("$SCRIPT" "[INCOM-456] the msg")" "Incomplete conventional commit"
 assert "feat: [BRANCH-4] doc [INCOM-456] the msg" "$("$SCRIPT" "doc [INCOM-456] the msg")" "Incomplete conventional commit"
 
+export TEST_BRANCH="BRANCH-5"
+assert "feat!: [BRANCH-5] the msg" "$("$SCRIPT" "!the msg")" "Start message with breaking change"
+assert "feat(scope)!: [BRANCH-5] the msg" "$("$SCRIPT" "!(scope)the msg")" "Breaking change and scope"
+
 echo ""
 echo "All assertions passed. Total:" "$TOTAL_TESTS"
