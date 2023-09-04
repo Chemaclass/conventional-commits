@@ -21,7 +21,15 @@ Creates symlink from the actual hook to point to the bash script.
 make init-hooks
 ```
 
-### Tests
+### Development
+
+Make sure you've got install the bash testing library
+
+```bash
+git submodule update --init --recursive
+```
+
+#### Tests
 
 I included several unit tests to verify the expected behaviour of the hook logic.
 
@@ -29,6 +37,3 @@ I included several unit tests to verify the expected behaviour of the hook logic
 make tests
 ```
 
-## Follow-up idea
-
-Separate the testing logic into another repo, so it could be reused anywhere.

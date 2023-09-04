@@ -1,4 +1,5 @@
 # Directory where your tests scripts are located
+ROOT_DIR = .
 SRC_SCRIPTS_DIR = git-hooks
 TEST_SCRIPTS_DIR = tests
 
@@ -16,6 +17,6 @@ list-tests:
 
 # Run all tests scripts
 test: $(TEST_SCRIPTS)
-	$(TEST_SCRIPTS_DIR)/test_runner.sh $(TEST_SCRIPTS)
+	./tools/bashunit/src/test_runner.sh $(TEST_SCRIPTS)
 
 .PHONY: test list-tests
