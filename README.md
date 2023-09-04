@@ -1,6 +1,6 @@
 # Conventional commits
 
-A specification for adding human and machine readable meaning to commit messages
+A specification for adding human and machine-readable meaning to commit messages
 
 Read the docs: https://www.conventionalcommits.org/en/v1.0.0/
 
