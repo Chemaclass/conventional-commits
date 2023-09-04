@@ -17,6 +17,6 @@ list-tests:
 
 # Run all tests scripts
 test: $(TEST_SCRIPTS)
-	./tools/bashunit/src/test_runner.sh $(TEST_SCRIPTS)
+	./tools/bashunit/bashunit $(TEST_SCRIPTS)
 
 .PHONY: test list-tests
