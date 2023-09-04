@@ -29,3 +29,6 @@ I included several unit tests to verify the expected behaviour of the hook logic
 make tests
 ```
 
+## Follow-up idea
+
+Separate the testing logic into another repo, so it could be reused anywhere.
