@@ -1,22 +1,21 @@
-# Directory where your tests scripts are located
+SHELL=/bin/bash
 ROOT_DIR = .
 SRC_SCRIPTS_DIR = git-hooks
 TEST_SCRIPTS_DIR = tests
 
-# Find all *_test.sh scripts in the specified directory
 TEST_SCRIPTS = $(wildcard $(TEST_SCRIPTS_DIR)/*_test.sh)
 
-# Display the list of tests scripts found
 init-hooks:
 	$(SRC_SCRIPTS_DIR)/init.sh
 
-# Display the list of tests scripts found
 list-tests:
 	@echo "Test scripts found:"
-	@echo "$(TEST_SCRIPTS)"
+	@echo $(TEST_SCRIPTS) | tr ' ' '\n'
 
-# Run all tests scripts
 test: $(TEST_SCRIPTS)
-	./tools/bashunit/bashunit $(TEST_SCRIPTS)
+	./tools/bashunit/bashunit "$(TEST_SCRIPTS)"
+
+test/watch: $(TEST_SCRIPTS)
+	watch --color -n 1 ./tools/bashunit/bashunit "$(TEST_SCRIPTS)"
 
 .PHONY: test list-tests
