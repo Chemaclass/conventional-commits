@@ -13,7 +13,7 @@ list-tests:
 	@echo $(TEST_SCRIPTS) | tr ' ' '\n'
 
 test: $(TEST_SCRIPTS)
-	./tools/bashunit/bashunit "$(TEST_SCRIPTS)"
+	TEST=true ./tools/bashunit/bashunit "$(TEST_SCRIPTS)"
 
 test/watch: $(TEST_SCRIPTS)
 	watch --color -n 1 ./tools/bashunit/bashunit "$(TEST_SCRIPTS)"

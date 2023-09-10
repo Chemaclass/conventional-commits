@@ -25,10 +25,14 @@ make init-hooks
 
 ### 💻 Development
 
-Make sure you've installed the bash testing library.
+Make sure you've installed the [bash testing library](https://github.com/Chemaclass/bashunit).
 
 ```bash
+# Initial install of bashunit
 git submodule update --init --recursive
+
+# Update to the latest
+git submodule update --remote
 ```
 
 #### Automated tests
