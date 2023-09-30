@@ -1,0 +1,32 @@
+# https://help.github.com/en/categories/automating-your-workflow-with-github-actions
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+name: Tests
+
+jobs:
+
+  tests:
+    name: "Run tests on ${{ matrix.os }}"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ 'ubuntu-latest', 'macos-latest', 'windows-latest']
+        include:
+          - os: windows-latest
+            script_name: 'bash -c "lib/bashunit tests/**/*_test.sh"'
+          - os: ubuntu-latest
+            script_name: 'make test'
+          - os: macos-latest
+            script_name: 'make test'
+    steps:
+      - uses: actions/checkout@v3
+      - name: "Install dependencies"
+        run: ./install-dependencies.sh
+      - name: "Tests"
+        run: ${{ matrix.script_name }}
+
