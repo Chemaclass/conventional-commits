@@ -1,3 +1,0 @@
-[submodule "tools/bashunit"]
-	path = tools/bashunit
-	url = git@github.com:Chemaclass/bashunit.git

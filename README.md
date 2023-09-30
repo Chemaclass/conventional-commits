@@ -28,11 +28,7 @@ make init-hooks
 Make sure you've installed the [bash testing library](https://github.com/Chemaclass/bashunit).
 
 ```bash
-# Initial install of bashunit
-git submodule update --init --recursive
-
-# Update to the latest
-git submodule update --remote
+./install-dependencies.sh
 ```
 
 #### Automated tests
@@ -41,5 +37,7 @@ I included several unit tests to verify the expected behaviour of the hook logic
 
 ```bash
 make tests
+# or
+TEST=true lib/bashunit tests/*_test.sh
 ```
 
