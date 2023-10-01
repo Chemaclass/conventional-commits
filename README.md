@@ -38,6 +38,6 @@ I included several unit tests to verify the expected behaviour of the hook logic
 ```bash
 make tests
 # or
-TEST=true lib/bashunit tests/*_test.sh
+TEST=true bin/bashunit tests/*_test.sh
 ```
 
