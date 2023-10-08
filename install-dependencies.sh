@@ -1,5 +1,4 @@
 #!/bin/bash
 
 ## bashunit
-curl -s https://raw.githubusercontent.com/TypedDevs/bashunit/main/install.sh\
-  | bash -s main bin
+curl -s https://bashunit.typeddevs.com/install.sh | bash -s bin 0.8.0
