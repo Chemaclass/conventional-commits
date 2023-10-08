@@ -1,7 +1,15 @@
 #!/bin/bash
 
-ROOT_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
-SCRIPT="$ROOT_DIR/git-hooks/prepare-commit-msg.sh"
+CONVENTIONAL_COMMITS_ROOT_DIR="$(dirname "${BASH_SOURCE[0]}")/../.."
+SCRIPT="$CONVENTIONAL_COMMITS_ROOT_DIR/git-hooks/prepare-commit-msg.sh"
+
+function set_up_before_script() {
+  export TEST=true
+}
+
+function tear_down_after_script() {
+  unset TEST
+}
 
 function test_ignore_all_logic_when_using_a_conventional_commit() {
   export TEST_BRANCH="main"
