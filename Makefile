@@ -11,9 +11,9 @@ list-tests:
 	@echo $(TEST_SCRIPTS) | tr ' ' '\n'
 
 test: $(TEST_SCRIPTS)
-	TEST=true ./bin/bashunit tests
+	TEST=true ./lib/bashunit tests
 
 test/watch: $(TEST_SCRIPTS)
-	watch --color -n 1 ./bin/bashunit tests
+	watch --color -n 1 ./lib/bashunit tests
 
 .PHONY: test list-tests
