@@ -9,6 +9,7 @@ function set_up_before_script() {
 
 function tear_down_after_script() {
   unset TEST
+  unset TEST_BRANCH
 }
 
 function test_ignore_all_logic_when_using_a_conventional_commit() {
